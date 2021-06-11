@@ -34,9 +34,6 @@ Route::get('/', function () {
     return redirect()->route('data');
 })->name('home');
 
-// Route::get('/uji', 'NaiveCoreController@index')->name('test');
-// Route::post('/core', 'NaiveCoreController@naiveBayes')->name('naive');
-
 Route::prefix('/admin')->group(function(){
     Route::get('/data', 'AdminController@index')->name('data');
     Route::post('/data/add', 'AdminController@postData')->name('postData');

@@ -89,7 +89,7 @@ class AdminController extends Controller
     }
 
     public function NaiveBayes(){
-        $getLabel = Hoax::selectRaw('(CASE WHEN table_hoax.label = 1 THEN "Positif" ELSE "Negatif" END) AS Label, judul as Judul, narasi as Narasi')->get()->toArray();
+        $getLabel = Hoax::selectRaw('(CASE WHEN table_hoax.label = 1 THEN "Fact" ELSE "Hoax" END) AS Label, judul as Judul, narasi as Narasi')->get()->toArray();
         // print_r($getLabel);
 
         $uji = [];
@@ -103,7 +103,7 @@ class AdminController extends Controller
         // print_r($uji);
 
         $nb = new NaiveBayes();
-        $nb->setClass(['positif', 'negatif']);
+        $nb->setClass(['Fact', 'Hoax']);
 
         // proses training
         $nb->training($uji);
